@@ -1,3 +1,4 @@
+//replaceString函数将source中的s1用字符串s2替代
 #include <stdio.h>
 
 int findString(const char s1[], const char s2[])
@@ -29,7 +30,7 @@ void removeString(char s1[], int start, int counter)
     char s2[100];
     int i= 0, m = start;
 
-    while(s1[i] != '\0')   //����s1
+    while(s1[i] != '\0')   //¸´ÖÆs1
     {
         s2[i] = s1[i];
         ++i;
@@ -50,7 +51,7 @@ void insertString(char s1[], const char insert[], int insertNumber)
     int i = 0, m = 0;
     int n = insertNumber;
 
-    while(s1[m] != '\0')           //���ַ���s2��ֵΪs1
+    while(s1[m] != '\0')           //°Ñ×Ö·û´®s2¸³ÖµÎªs1
     {
         s2[m] = s1[m];
         ++m;
