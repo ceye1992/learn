@@ -3,22 +3,46 @@
 
 #include <stdio.h>
 
+int int_size (void)
+{
+    int count= 0;
+    unsigned int n = ~0;
+
+    while(n){
+        n >>= 1;
+        ++count;
+    }
+    return count;
+}
+
 int bitpat_search(unsigned int source, unsigned int pattern, int n)
 {
     unsigned int num1;
-    int count = 0;
+    int m , count = 0;
+    int int_size(void);
 
-    num1 = pattern << (31 - n);
+    m = int_size();
+
+    num1 = pattern << (m - n);
 
     if(source == num1)
         return 0;
 
-    while ((source << 1) & num1 != num1 ){
+    while ((source & num1) != num1){
         source <<= 1;
         ++count;
-        if(count > 31 - n)
+        if(count > (m - n))
             return -1;
     }
-
     return count;
+}
+
+
+int main(void)
+{
+    int bitpat_search(unsigned int source, unsigned int pattern, int n);
+
+    printf("%i", bitpat_search(0xe1f4, 0x5, 3));
+
+    return 0;
 }
