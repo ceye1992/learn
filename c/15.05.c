@@ -34,5 +34,8 @@ int main(void)
         ++curcol;
     }
 
+    //╧ь╠унд╪Ч
+    fclose(inName);
+
     return 0;
 }
