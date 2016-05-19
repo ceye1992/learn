@@ -1,0 +1,17 @@
+#lang racket
+(define (mulit a b)
+  (mulit-iter a b 0))
+(define (mulit-iter a b n)
+  (cond ((= b 0) n)
+        ((even? b) (mulit-iter (double a)
+                   (halve b)
+                   n))
+        (else (mulit-iter  a
+              (- b 1)
+              (+ n a)))))
+(define (double a)
+  (* 2 a))
+(define (halve b)
+  (/ b 2))
+(define (even? b)
+  (= (remainder b 2) 0))
