@@ -1,0 +1,33 @@
+#lang racket
+(define (expmod bass exp n)
+  (cond ((= exp 0)
+         1)
+        ((no-square-root? bass n)
+         0)
+        ((even? exp)
+         (remainder (square(expmod bass (/ exp 2) n))
+                    n))
+        (else
+         (remainder (* bass (expmod bass (- exp 1) n))
+                    n))))
+(define (no-square-root? a n)
+  (and (not (= a 1))
+       (not (= a (- n 1)))
+       (= 1 (remainder (square a) n))))
+(define (square x)
+  (* x x))
+(define (Miller-Rabin-test n)
+  (test-iter n (divison n)))
+(define (divison n)
+  (cond ((= (remainder n 2) 0) (/ n 2))
+        (else (/ (+ 1 n) 2))))
+(define (test-iter n times)
+  (cond ((= times 0)
+         #t)
+        ((= (expmod (+ 1 (random (- n 1))) (- n 1) n)
+         1)
+        (test-iter n (- times 1)))
+        (else
+         #f)))
+
+  
