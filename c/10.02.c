@@ -11,12 +11,11 @@ struct entry
 
 void insertEntry (struct entry *insert, struct entry *to)
 {
-
-    struct entry *temp;
+    struct entry temp;
 
     temp = *to;
-    to = *insert;
-    *insert = *temp;
+    to = insert->value;
+    insert = temp.next;
 
 }
 
@@ -38,9 +37,7 @@ int main(void)
     n4.date = 50;
 
 
-    insertEntry(n4.next, n2.next);
-   // n4.next = n2.next;
-    //n2.next = &n4;
+    n2.next = insertEntry(n2, n4)
 
     while(listStar != (struct entry *)0)
     {

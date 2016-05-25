@@ -5,7 +5,7 @@
 int arraySum (int array[], const int n)
 {
     int sum = 0, *ptr;
-    int *const arrayEnd = array + n;
+    int *const arrayEnd = array + n;  //常量指针
 
     for(ptr = array; ptr < arrayEnd ; ++ptr)  //这里运用arrayEnd是一种优化 可以运用ptr <=array +n,但是前者不用再循环中每次进行求值
         sum += *ptr;

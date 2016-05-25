@@ -1,4 +1,4 @@
-#lang racket
+#lang planet neil/sicp
 (define (expmod bass exp n)
   (cond ((= exp 0)
          1)

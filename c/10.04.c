@@ -10,7 +10,8 @@ struct entry
 
 void removeEntry (struct entry *list, struct entry *reomve)
 {
-    list->next = reomve ->next;
+    remove = reomve->next;   //指针list指向的指针next赋值为remove的指向的指针
+                                //也就是remove的指针指向remove的指针指向的指针
 
 }
 
