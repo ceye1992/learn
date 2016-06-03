@@ -1,7 +1,7 @@
 (define (div-interval x y)
   (if (or (< ((* upper-bound x) (lower-bound x))
              0)
-          (> ((* upper-bound y) (lower-bound y))
+          (< ((* upper-bound y) (lower-bound y))
              0))
       (display "The number can't be division")
       (mul--interval x
