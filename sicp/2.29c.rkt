@@ -8,7 +8,7 @@
   (car items))
 
 (define (rigtht-branch items)
-  (cdr items))
+  (car (cdr items)))`
 
 (define (branch-length branch)
   (car branch))
