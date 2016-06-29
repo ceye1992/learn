@@ -27,13 +27,15 @@
                 (cons (car input) result)))))
       
 
-(define (intersection-set set1 set2)
-  (cond ((or (null? set1) (null? set2))
-         '())
-        ((element-of-set? (car set1) set2)
-         (cons (car set1)
-               (intersection-set (cdr set1) set2)))
-        (else
-         (intersection-set (cdr set1) set2))))
-       
+(define (intersection-set set another)
+  (define (iter set result)
+    (if (or (null? set) (null? another))
+        result
+        (if (and (element-of-set? (car set) another)
+                 (not (element-of-set? (car set) result)))
+            (iter (cdr set)
+                  (cons (car set) result))
+            (iter (cdr set)
+                  result))))
+  (iter set '()))
         
