@@ -1,0 +1,17 @@
+(define (element-of-set? x set)
+  (cond ((null? set) false)
+        ((= x (car set)) true)
+        ((< x (car set)) false)
+        (else (element-of-set? x (cdr set)))))
+
+(define (adjoin-set x set)
+  (if (null? set)
+      (list x)
+      (let ((x1 (car set))
+            (x2 (cdr set)))
+        (cond ((= x x1) set)
+              ((> x x1)
+               (cons x1
+                     (adjoin-set x x2)))
+              ((< x x1)
+               (cons x set))))))
