@@ -1,0 +1,29 @@
+(define (encode message tree)
+  (if (null? message)
+      '()
+      (append (encode-symbol (car message) tree)
+              （encode (cdr messgae) tree)))
+
+(define (encode-symbol bit tree)
+  (cond ((leaf? tree)
+         '())
+        ((symbol-in-tree? bit (left-branch tree))
+         (cons 0
+               (encode-symbol bit (left-branch tree))))
+        ((symbol-in-tree? bit (right-branch tree))
+         (cons 1
+               (encode-symbol bit (right-branch tree))))
+        (else
+         (error "This bit not in tree: " bit))))
+(define (left-branch tree)
+  (car tree))
+
+(define (right-branch tree)
+  (cadr tree))
+
+(define (symbol-in-tree? given-bit tree)
+  (not
+   (false?
+    (find (lambda (s)
+            (eq? s given-bit))
+          (symbols treee)))))

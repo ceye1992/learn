@@ -1,0 +1,53 @@
+(define (make-leaf-set pairs)
+  (if (null? pairs)
+      '()
+      (let ((pair (car pairs)))
+        (adjoin-set (make-leaf (car pair)
+                               (cadr pair))
+                    (make-leaf-set (cdr pairs))))))
+(define (adjoin-set x set)
+  (cond ((null? set)
+         (list x))
+        ((< (weight x) (weight (car set)))
+         (cons x set))
+        (else (cons (car set)
+                    (adjoin-set x (cdr set))))))
+(define (make-leaf symbol weight)
+  (list 'leaf symbol weight))
+(define (weight tree)
+  (if (leaf? tree)
+      (weight-leaf tree)
+      (cadddr tree)))
+(define (leaf? object)
+  (eq? (car object) 'leaf))
+(define (weight-leaf x)
+  (caddr x))
+(define (make-code-tree left right)
+  (list left
+        right
+        (append (symbols left) (symbols right))
+        (+ (weight left) (weight right))))
+(define (symbols tree)
+  (if (leaf? tree)
+      (list (symbol-leaf tree))
+      (caddr tree)))
+(define (symbol-leaf x)
+  (cadr x))
+
+
+(define (generate-huffman-tree pairs)
+  (successive-merge (make-leaf-set pairs)))
+
+(define (successive-merge set)
+  (cond ((= 0 (length set))
+         '())
+        ((= 1 (length set))
+         (car set))
+        (else
+         (let ((new-tree (make-code-tree (car set)
+                                         (cadr set)))
+               (remained-tree (cddr set)))
+           (successive-merge (adjoin-set new-tree
+                                        remained-tree))))))
+                         
+
