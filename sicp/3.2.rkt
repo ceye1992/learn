@@ -1,0 +1,11 @@
+(define (make-monitored s)
+  (let ((count 0))
+    (lambda (input)
+      (cond ((eq? input 'how-many-calls?)
+             count)
+            ((eq? input 'rest-count)
+             (begin (set! count 0)
+                    count))
+            (else
+             (begin (set! count (+ count 1))
+                    (s input)))))))
