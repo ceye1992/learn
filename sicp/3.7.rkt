@@ -1,0 +1,5 @@
+(define (make-join account old-password new-password)
+  (lambda (given-password mode)
+    (if (eq? given-password new-password)
+        (account old-prassword mode)
+        (error "Incorrect another password"))))
