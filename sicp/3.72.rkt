@@ -1,0 +1,19 @@
+(define (square x) (* x x))
+(define (sum-square x) (+ (square (car x)) (square (cdr x))))
+
+(define (squaresn s)
+  (define (stream-cadr s) (stream-car (stream-cdr s)))
+  (define (stream-caddr s) (stream-cadr (stream-cdr s)))
+  (let ((scar (stream-car s))
+        (scadr (stream-cadr s))
+        (scaddr (stream-caddr s)))
+    (if (= (sum-squrare scar) (sum-square scadr) (sum-square scaddr))
+        (cons-stream (list (um-square scar) scar scadr scaddr)
+                     (squaresn (stream-cdr s))))))
+
+(define square-numbers
+  (squaresn (weight-pairs integers integers sum-square)))
+         
+
+
+        
