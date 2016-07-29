@@ -1,0 +1,11 @@
+(define (accumulate op initial sequence)
+  (if (null? sequence)
+      initial
+      (op (car sequence)
+          (sccumulate op initial (cdr sequence)))))
+
+(define (horner-eval x coefficient-sequence)
+  (accumulate (lambda (this-coeff higher-term)
+                (+ this-coeff (* higher-term)))
+               0
+               coefficient-sequence)))

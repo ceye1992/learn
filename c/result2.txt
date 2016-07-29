@@ -1,0 +1,6 @@
+Enter a number between 1 adn 100: 
+
+You number is 3.00
+Half of it is 1.50
+Square it to get 9.00
+Cube it to get 27.00

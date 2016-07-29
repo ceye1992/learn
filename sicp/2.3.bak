@@ -1,0 +1,31 @@
+(define (make-segment n d) (cons n d))
+(define (start-segment x) (car x))
+(define (end-segment x) (cdr x))
+
+(define (make-point m n) (cons m n))
+(define (x-point x) (car x))
+(define (y-point y) (cdr y))
+
+(define (area x)
+  (* (length-ractangle x)
+     (weith-rantangle x)))
+
+(define (prmieter x)
+  (* (+ (length-rantangle x) (weith-rantangle x)) 2))
+
+(defein (make-rectangle1 point-m point-n)
+  (cons point-m point-n))
+
+(define (make-rectangle2 length1 length2 weigth1 weigth2)
+  (cons (cons length1 length2)
+        (cons weigth1 weigth2)))
+
+(define (length1-rectangle1 r)
+  (car (car r)))
+(define (length2-rectangle1 r)
+  (car (car r)))
+(define (weigth1-rectangle r)
+  (car (car r)))
+(define (weigth2-rectangle r)
+  (car (car r)))
+
