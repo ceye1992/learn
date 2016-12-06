@@ -23,7 +23,7 @@ public:
 
 private:
     shared_ptr<vector<string>> input; //保存输入的文件文本
-    std::map<string, shared_ptr<std::set<LineNO>>> result; //保存每一个单词和其所在的行
+    std::map<string, shared_ptr<std::set<LineNo>>> result; //保存每一个单词和其所在的行
 };
 
 class QueryResult{
@@ -40,19 +40,19 @@ private:
 
 };
 
-TextQuery::Textquery(std::ifstream& ifs): input(new vector<string>)
+TextQuery::TextQuery(std::ifstream& ifs) : input(new vector<string>)
 {
-    LineNo LineNo{0};
-
-    for(string line; std::getline(ifs,line); ++LineNO){
+    LineNo lineNo{0};
+    for (string line; std::getline(ifs, line); ++lineNo) {
         input->push_back(line);
-        std::istringstream Line_stream(line);
-        for(string text, word; line_stream>>text; word.clear()){
-            //防止读入标点符号
+        std::istringstream line_stream(line);
+        for (string text, word; line_stream >> text; word.clear()) {
+            // avoid read a word followed by punctuation(such as: word, )
             std::remove_copy_if(text.begin(), text.end(),
                                 std::back_inserter(word), ispunct);
-            auto & nos = result[word];
-            if(!nos) nos.reset(new std::set<LineNO>);
+            // use reference avoid count of shared_ptr add.
+            auto& nos = result[word];
+            if (!nos) nos.reset(new std::set<LineNo>);
             nos->insert(lineNo);
         }
     }
