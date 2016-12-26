@@ -1,2 +1,10 @@
-Git is a distributed version control system.
-Git is free software.
+Alica Emma has long flowing red hair.
+Her Daddy says when the wind blows
+through her hair, it looks almost alive,
+like a fiery bird in fligh.
+A beautiful fiery bird, he tells her,
+magical but untamed.
+"Daddy, shush, there is no such thing,"
+she tells him, at the same time wanting
+him to tell her more.
+Shyly, she asks, "I mean, Daddy, is there?"
